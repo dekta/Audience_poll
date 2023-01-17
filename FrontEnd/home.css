@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+.navbar{
+    position: sticky;
+    width: 100%;
+    z-index: 999;
+    padding: 30px 0;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s ease;
+    
+}
+.navbar.sticky{
+    padding: 15px 0;
+    background: #5ce1e6;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo img{
+    width: 50%;
+}
+.navbar.sticky .logo a span{
+    color: #fff;
+}
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+}
+.navbar .menu li a{
+    display: block;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+.navbar .menu li a:hover{
+    color: #5ce1e6;
+}
+.navbar.sticky .menu li a:hover{
+    color: #fff;
+}
+
+#signup{
+    background-color: #5ce1e6;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 1px solid yellow;
+}
+
+/* content */
+
+.first{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    padding: 15px;
+    border-radius: 35px;
+    background-color: #5ce1e6;
+    font-size: 30px;
+    justify-content: space-around;
+    color: #fff;
+    border: 2px solid yellow;
+    font-weight: bold;
+}
+
+#first-2{
+    display: flex;
+    border: 2px solid yellow;
+    padding: 5px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+#first-2-2 span input{
+   border-style: none;
+   background-position:  center;
+   background-color: White;
+   border: 0;
+   outline: 0;
+   font-size: 15px;
+  
+}
+#first-2-2 span{
+    color: #5ce1e6;
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+#first-2-3 span{
+    color: white;
+    background-color: #5ce1e6;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 25px;
+}
+
+#second div h1{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 60px;
+    font-weight: 700;
+}
+#second div p{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: 400;
+    
+}
+
+#third{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    justify-content:space-around;
+    margin: auto;
+    margin-top: 40px;
+}
+
+#third button{
+    padding: 20px;
+    font-size: 20px;
+    background-color: White;
+    border: 0;
+    outline: 0;
+}
+#third button:nth-child(1){
+    background-color: #5ce1e6;
+}
