@@ -146,8 +146,82 @@ html{
     background-color: #5ce1e6;
     border-radius: 2%;
     padding: 10px 20px;
+    color: white;
 }
 
-/* #third button:nth-child(2){
-    
-} */
+#third p a{
+    text-decoration: underline;
+    color: #5ce1e6;
+    font-size: 20px;
+}
+
+
+#five{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+#five-1{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+#six{
+    margin-top: 80px;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+#six h1{
+    font-size: 50px;
+    margin-top: 100px;
+}
+
+#six p{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#seven{
+    display: flex;
+    justify-content:space-around;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+#seven-left video{
+    width: 60%;
+    padding: 10px;
+    border: 0px solid red;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#seven-right{
+    width: 50%;
+    margin-right: 30px;
+    padding: 10px;
+    border: 0px solid red;
+}
+hr{
+    background-color: rgb(205, 200, 200);
+    margin-top: 5px;
+}
+.seven-c{
+    padding: 20px;
+}
+
+.seven-c h3{
+    font-size: 30px;
+    font-weight: solid;
+}
+
+.seven-c p {
+    padding: 20px;
+    font-size: 20px;
+}
+.seven-c h3 span{
+    margin-right: 20px;
+    color: #5ce1e6;
+    font-size: 40px;
+}
