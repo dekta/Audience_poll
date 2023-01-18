@@ -144,4 +144,10 @@ html{
 }
 #third button:nth-child(1){
     background-color: #5ce1e6;
+    border-radius: 2%;
+    padding: 10px 20px;
 }
+
+/* #third button:nth-child(2){
+    
+} */
