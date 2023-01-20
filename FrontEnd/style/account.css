@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    text-align: center;
+    padding: 50px;
+}
+
+#verify span{
+    color: #5ce1e6;
+    background-color: #c8eef0;
+    padding: 10px;
+    border-radius: 25%;
+}
+
+#top{
+    margin-top: 20px;
+    
+}
+
+#top h3{
+    font-size: 30px;
+}
+
+#top p{
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+#account{
+    font-size: 20px;
+    padding: 40px;
+    margin: auto;
+}
+
+#account input{
+    width: 40%;
+    height: 30px;
+    margin-top: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    outline: 0;
+    border: 0;
+    text-align: center;
+}
+
+button{
+    margin-top: 50px;
+    display: block;
+    margin-left: 900px;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 20px;
+    background-color: #5ce1e6;
+    color: white;
+    border: 0;
+}
