@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.navbar{
+    width: 100%;
+}
+
+#nav-1{
+    width: 100%;
+    background-color: #5ce1e6;
+    padding: 5px;
+    
+}
+
+#in{
+    width: 20%;
+    border: 0px solid red;
+    padding: 5px;
+    background-color: aliceblue;
+    margin: 5px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: right;
+}
+#in input{
+    outline: 0;
+    border: 0;
+    padding: 8px;
+    background-color: aliceblue;
+    margin: auto;
+   
+}
+#in span{
+    padding: 5px;
+}
+
+#nav-2{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.menu{
+    display: flex;
+    gap: 30px;
+    padding: 10px;
+    margin-left: 30px;
+    
+}
+.menu li{
+   
+    list-style: none;
+    display: inline-block;
+}
+.menu-btn{
+    color: black;
+}

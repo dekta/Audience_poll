@@ -1,10 +1,11 @@
 let mongoose =  require("mongoose")
 
 let userSchema = mongoose.Schema({
-    name:"String",
+    firstName:"String",
+    lastName:"String",
     email:"String",
     password:"String",
-    role:{type:String,enum:["user","writer","admin"],default:"user"}
+    role:{type:String,enum:["user","premiumUser","admin"],default:"user"}
 })
 
 let UserModel = mongoose.model("user",userSchema)
