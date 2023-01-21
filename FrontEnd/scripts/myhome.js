@@ -11,6 +11,7 @@
 //     })
 
 
+
 function Random(){
     let p = document.querySelector(".event-3-1-b")
     let country = ["India","Germany","USA","Hong Kong","Japan","France","UK"]
@@ -25,3 +26,29 @@ function Random(){
 }
 
 Random()
+
+const clientServer = io("http://localhost:8050/", { transports : ['websocket'] })
+let create = document.getElementById("create")
+create.onclick=()=>{
+    let startDate = document.getElementById("sDate").value
+    let endDate = document.getElementById("eDate").value
+    let eventName = document.getElementById("Aname").value
+    if(startDate==''||endDate==''||eventName==''){
+        alert("please fill all details")
+    }
+    else{
+        let obj ={
+            startDate,
+            endDate,
+            eventName,
+            
+
+        }
+        
+        clientServer.emit("event",obj)
+        location.href = "polls.html"
+    }
+    
+}
+
+
