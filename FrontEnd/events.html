@@ -7,6 +7,7 @@
     <title>Events</title>
     <link rel="stylesheet" href="./style/myhome.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="navbar">
@@ -144,21 +145,21 @@
             <div id="inputs">
                 <div>
                     <p>Start date</p>
-                    <input type="date" placeholder="">
+                    <input id="sDate" type="date" placeholder="">
                 </div>
                 <div>
                     <p>End date</p>
-                    <input type="date" placeholder="">
+                    <input id="eDate" type="date" placeholder="">
                 </div>
             </div>
 
             <div id="name">
                 <p>Give your Audience poll a name</p>
-                <input type="text" placeholder="Audience poll name">
+                <input id="Aname" type="text" placeholder="Audience poll name">
             </div>
 
             <div id="btns">
-                <button>Create</button>
+                <button id="create">Create</button>
                 <a class="close-1" href="#"><button>Cancel </button></a>
             </div>
 
