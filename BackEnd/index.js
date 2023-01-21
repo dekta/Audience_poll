@@ -68,7 +68,7 @@ io.on("connection",(socket)=>{
     function Verify(token){
         socket.on("event_info",function(token){
             const decoded = jwt.verify(token, 'shhhhh');
-            console.log(decoded)
+            //console.log(decoded)
     
         })  
     }
