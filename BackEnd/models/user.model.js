@@ -5,7 +5,7 @@ let userSchema = mongoose.Schema({
     lastName:"String",
     email:"String",
     password:"String",
-    role:{type:String,enum:["user","premiumUser","admin"],default:"user"}
+    role:{type:String,enum:["user","premiumUser","admin"],default:"admin"}
 })
 
 let UserModel = mongoose.model("user",userSchema)

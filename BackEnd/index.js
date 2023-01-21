@@ -94,6 +94,43 @@ async function emailMessage(email){
         })
 }
 
+app.post('/audiencePoll/login',async(req,res)=>{
+    const {email,password} = req.body;
+    const user =  await UserModel.findOne({email})
+    const hash_password = user?.password
+    try{
+        if(user.email){
+            bcrypt.compare(password, hash_password, function(err, result) {
+                if(result){
+                    const token = jwt.sign({ email,id:user._id}, process.env.LOGIN_KEY);
+                    //const ref_token = jwt.sign({userID:user._id }, process.env.SRKEY,{ expiresIn: 300000 })
+                    res.cookie("login_token",token,{httpOnly:true})
+                    res.status(200).send({"msg":"login successfully","normaltoken":token})
+                }
+                else{
+                    res.status(401).send("invalid email and password")
+                }
+            });
+        }
+        else{
+            res.status(401).send("user not exist")
+        }
+    }
+    catch(err){
+        res.send(err)
+    }
+    
+})
+
+app.get("/logout",(req,res)=>{
+    const token = req.headers?.authorization?.split(' ')[1]|| req.cookies?.token
+    const blacklisting = JSON.parse(fs.readFileSync("./blacklist.json","utf-8"))
+    blacklisting.push(token)
+    fs.writeFileSync("./blacklist.json",JSON.stringify(blacklisting))
+    return res.send("user logout")
+
+})
+
 app.use("/userOnbording",signupAuthenticate,personalRouter)
 
 app.listen(8050,async(req,res)=>{
