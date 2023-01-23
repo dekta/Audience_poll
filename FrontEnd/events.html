@@ -7,7 +7,12 @@
     <title>Events</title>
     <link rel="stylesheet" href="./style/myhome.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
+      integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 </head>
 <body>
     <div class="navbar">
@@ -20,9 +25,9 @@
         </div>
         <div id="nav-2">
             <ul class="menu">
-                <li><a href="#" class="menu-btn">Question</a></li>
+                <li><a href="#question" class="menu-btn">Question</a></li>
                 <li><a href="#message" class="menu-btn">Answer</a></li>
-                <li><a href="#" class="menu-btn">Poll</a></li>
+                <li><a href="polls.html" class="menu-btn">Poll</a></li>
                 <li><a href="#" class="menu-btn">Tutorials</a></li>
             </ul>
             <div class="menu-btn">
@@ -193,6 +198,19 @@
                 </div>
                 <div id="msg_btn" >
                     <a href="#"><button id="msg_btn">Send</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="question" class="overlay">
+        <div class="question">
+            <a class="close" href="#">&times;</a>
+            
+            <div id="input_ques">
+                <div id="Question_input">
+                    <h3 id="show_ques"></h3>
+                    <h3 id="show_code"></h3>
                 </div>
             </div>
         </div>

@@ -27,7 +27,8 @@ function Random(){
 
 Random()
 
-const clientServer = io("http://localhost:8050/", { transports : ['websocket'] })
+// const clientserver = io("https://tired-cuff-links-cod.cyclic.app/", { transports : ['websocket'] })
+const clientserver = io('http://localhost:8050/',{ transports : ['websocket'] })
 let create = document.getElementById("create")
 create.onclick=()=>{
     let startDate = document.getElementById("sDate").value
@@ -42,7 +43,7 @@ create.onclick=()=>{
             endDate,
             eventName,
         }
-        clientServer.emit("event",obj)
+        clientserver.emit("event",obj)
         
     }
     
@@ -51,12 +52,12 @@ create.onclick=()=>{
 const btn_create = document.getElementById("open_text_create")
 
 
-clientServer.on("eventInfo",(data)=>{
+clientserver.on("eventInfo",(data)=>{
      btn_create.onclick = ()=>{
         const question = document.getElementById("quess").value 
         data["question"]=question
         data["pollType"] = "OpenText"
-        clientServer.emit("add_details",data)
+        clientserver.emit("add_details",data)
 
     }
 
@@ -64,7 +65,12 @@ clientServer.on("eventInfo",(data)=>{
 
 let msg_btn = document.getElementById("msg_btn")
 let  votes= 0
-clientServer.on("msg",(data)=>{
+clientserver.on("msg",(data)=>{
+    console.log(data)
+    const Eventcode = document.getElementById("show_code")
+    Eventcode .innerText = "Question"+data.eventCode
+    const questions = document.getElementById("show_ques")
+    questions.innerText = "Question"+data.question
     let question = data.question
     let code = data.eventCode
     votes++
@@ -80,7 +86,7 @@ clientServer.on("msg",(data)=>{
             votes
         }
         if(code==client_code){
-            clientServer.emit("clientMsg",obj)
+            clientserver.emit("clientMsg",obj)
         }
         else{
             alert("wrong code")
