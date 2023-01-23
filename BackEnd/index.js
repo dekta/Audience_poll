@@ -32,9 +32,10 @@ const httpserver = http.createServer(app)
 
 
 
-app.get("/",(req,res)=>{
-    res.send("ok")
+app.get("/",function(req,res){
+    res.sendFile(`${process.cwd()}/FrontEnd/events.html`)
 })
+    
 
 app.use("/audiencepoll",user)
 app.use("/userOnbording",signupAuthenticate,personalRouter)
@@ -70,7 +71,7 @@ io.on("connection",(socket)=>{
             eventCode,
             question
         }
-        socket.emit("msg",obj)
+        io.emit("msg",obj)
         
     })
 
