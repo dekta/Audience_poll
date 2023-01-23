@@ -20,9 +20,9 @@
         </div>
         <div id="nav-2">
             <ul class="menu">
-                <li><a href="#" class="menu-btn">Events</a></li>
-                <li><a href="#" class="menu-btn">Team</a></li>
-                <li><a href="#" class="menu-btn">Analytics</a></li>
+                <li><a href="#" class="menu-btn">Question</a></li>
+                <li><a href="#message" class="menu-btn">Answer</a></li>
+                <li><a href="#" class="menu-btn">Poll</a></li>
                 <li><a href="#" class="menu-btn">Tutorials</a></li>
             </ul>
             <div class="menu-btn">
@@ -159,15 +159,47 @@
             </div>
 
             <div id="btns">
-                <button id="create">Create</button>
+                <a href="#popup2" ><button id="create" >Create</button></a>
                 <a class="close-1" href="#"><button>Cancel </button></a>
             </div>
 
+        </div>
+    </div>
+
+    <div id="popup2" class="overlay">
+        <div class="popup2">
+            <a class="close" href="#">&times;</a>
+            <h3>Write your quuestion?</h3>
+            <div id="input">
+                <div>
+                    <input id="quess" type="text" placeholder="What would you like to ask?">
+                </div>
+                <div id="open_text_btn" >
+                    <a href="#"><button id="open_text_create">Create</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="message" class="overlay">
+        <div class="message">
+            <a class="close" href="#">&times;</a>
+            
+            <div id="input_msg">
+                <div>
+                    <input id="event_code" type="text" placeholder="Code">
+                    <input id="p_name" type="text" placeholder="Enter name">
+                    <input id="in_msg" type="text" placeholder="Enter answer">
+                </div>
+                <div id="msg_btn" >
+                    <a href="#"><button id="msg_btn">Send</button></a>
+                </div>
+            </div>
         </div>
     </div>
     
     
 </body>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script> 
-<script src="./scripts/myhome.js"></script>
+<script src="./scripts/Event.js"></script>
 </html>

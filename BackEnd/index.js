@@ -17,6 +17,7 @@ const {signupAuthenticate} = require("./middleware/signup_authentication")
 const {authenticate} = require('./middleware/authorization')
 const {personalRouter} = require('./routes/personal.route')
 const {EventModel} =  require("./models/event.model")
+const {AnsModel} = require("./models/ans.model")
 
 
 
@@ -48,44 +49,43 @@ httpserver.listen(8050,async(req,res)=>{
     }
     console.log("server")
 })
-
-let eventId = 0
+let event = []
 const io = new Server(httpserver)
 io.on("connection",(socket)=>{
     console.log("hi from server")
     socket.on("event",function(data){
-        const code = Math.floor(Math.random()*10000)
-        eventId = Math.floor(Math.random()*1000)
-        data["EventId"] = eventId
+        const code = Math.floor(Math.random()*100000)
         data["eventCode"] = code
-        const event_token = jwt.sign({ EventId:eventId ,eventCode:code}, 'shhhhh');
-        Verify(event_token)
-        let newEvent = new EventModel(data)
-        newEvent.save()
-        
-    }) 
+        event.push(data)
+        socket.emit("eventInfo",data)
+    })
+     
 
-    function Verify(token){
-        socket.on("event_info",function(token){
-            const decoded = jwt.verify(token, 'shhhhh');
-            //console.log(decoded)
+    socket.on("add_details",function(data){
+        let event = new EventModel(data)
+        event.save()
+        let eventCode = data.eventCode
+        let question = data.question
+        let obj = {
+            eventCode,
+            question
+        }
+        socket.emit("msg",obj)
+        
+    })
+
+    socket.on("clientMsg",(data)=>{
+        let ans =  new AnsModel(data)
+        ans.save()
+        console.log(ans)
+    })
     
-        })  
-    }
    
 })
 
-// eventRouter.post("/createEvent",async(req,res)=>{
-//         const data = req.body
-//         try{
-//             const todo =  new EventModel(data)
-//             await todo.save()
-//             res.send("todo created")
-//         }
-//         catch(err){
-//             res.send(err)
-//         }
-//     })
+
+
+
     
 
 
