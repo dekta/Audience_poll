@@ -360,6 +360,94 @@ html{
       padding: 10px;
   }
 
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .overlay:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .popup2 {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    
+  }
+
+  .popup2 h3 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+    text-align: center;
+}
+
+#input{
+    margin: auto;
+    padding: 20px;
+    margin-left: 50px;
+}
+
+#open_text{
+    margin: auto;
+    border: 0px solid red;
+    padding: 20px;
+}
+#open_text h3{
+    margin-left: 50px;
+}
+
+
+#quess{
+    padding: 15px;
+    width: 60%;
+    font-size: 20px;
+    margin: auto;
+    margin-left: 60px;
+}
+#open_text_btn{
+    margin: auto;
+    margin-left: 140px;
+   
+}
+#open_text_btn button{
+    font-size: 20px;
+}
+
+
+#open_text_create{
+    padding: 10px;
+    border:0;
+    margin-top: 20px;
+    background-color: #5ce1e6;
+    color: white;
+    margin-left: 50px;
+}
+
+.message {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 50%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    
+  }
+
+
   @media screen and (max-width: 700px){
     .box{
       width: 70%;

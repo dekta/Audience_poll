@@ -41,14 +41,60 @@ create.onclick=()=>{
             startDate,
             endDate,
             eventName,
-            
-
         }
-        
         clientServer.emit("event",obj)
-        location.href = "polls.html"
+        
     }
     
 }
+
+const btn_create = document.getElementById("open_text_create")
+
+
+clientServer.on("eventInfo",(data)=>{
+     btn_create.onclick = ()=>{
+        const question = document.getElementById("quess").value 
+        data["question"]=question
+        data["pollType"] = "OpenText"
+        clientServer.emit("add_details",data)
+
+    }
+
+})
+
+let msg_btn = document.getElementById("msg_btn")
+let  votes= 0
+clientServer.on("msg",(data)=>{
+    let question = data.question
+    let code = data.eventCode
+    votes++
+    msg_btn.onclick = ()=>{
+        const ans = document.getElementById("in_msg").value
+        const client_code = document.getElementById("event_code").value
+        const personName = document.getElementById("p_name").value
+        let obj={
+            personName,
+            ans,
+            code,
+            question,
+            votes
+        }
+        if(code==client_code){
+            clientServer.emit("clientMsg",obj)
+        }
+        else{
+            alert("wrong code")
+        }
+       
+    }
+})
+
+
+
+
+
+
+ 
+
 
 
