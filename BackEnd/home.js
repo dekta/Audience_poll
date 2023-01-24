@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser')
 const fs = require("fs")
 
 const {UserModel} = require('./models/user.model')
-const {authenticate} = require('./middleware/authorization')
+
 
 
 const user = express.Router();
@@ -21,7 +21,7 @@ user.use(cors())
 user.post('/signup',async(req,res)=>{
     const {firstName,lastName,email,password,role} = req.body;
     const exists  = await UserModel.findOne({email})
-   // console.log(exists)
+   //console.log(exists)
     try{
         bcrypt.hash(password,5, async function(err,hash){
             if(err){
@@ -36,10 +36,10 @@ user.post('/signup',async(req,res)=>{
                     await user.save() 
                     emailMessage(email) 
                     const userId = await UserModel.findOne({email})
-                    const signup_token = jwt.sign({firstName,email,id:userId._id}, process.env.SIGNUP_KEY);
+                    //const signup_token = jwt.sign({firstName,email,id:userId._id}, process.env.SIGNUP_KEY);
                     //console.log(signup_token)
-                    req.headers = signup_token
-                    res.cookie("signup_token",signup_token,{httpOnly:true})
+                    //req.headers = signup_token
+                    //res.cookie("signup_token",signup_token,{httpOnly:true})
                     res.status(201).send({"msg":"congrats! signup successfull"})
             
                     
@@ -93,6 +93,7 @@ async function emailMessage(email){
 user.post('/login',async(req,res)=>{
     const {email,password} = req.body;
     const user =  await UserModel.findOne({email})
+    console.log(user)
     const hash_password = user?.password
     try{
         if(user.email){
@@ -100,7 +101,8 @@ user.post('/login',async(req,res)=>{
                 if(result){
                     const token = jwt.sign({ email,id:user._id}, process.env.LOGIN_KEY);
                     //const ref_token = jwt.sign({userID:user._id }, process.env.SRKEY,{ expiresIn: 300000 })
-                    res.cookie("login_token",token,{httpOnly:true})
+                    res.cookie("token",token,{httpOnly:true})
+                    req.headers = token
                     res.status(200).send({"msg":"login successfully","normaltoken":token})
                 }
                 else{

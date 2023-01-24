@@ -1,34 +1,26 @@
+const express = require("express");
+
+const {EventModel} = require("../models/event.model");
+
+const EventRouter = express.Router();
+
+EventRouter.use(express.json())
 
 
-// const httpserver = require("../index")
+EventRouter.get("/allques",async (req,res)=>{
+    let data = await EventModel.find()
+    res.send(data)
+})
 
-
-// const {EventModel} = require("../models/event.model")
-
-// httpserver.get("/",(req,res)=>{
-//     res.sendFile(`${process.cwd()}/frontentend/event.html`)
-// })
-
-// io.on("connection",(socket)=>{
-//     console.log("client connected")
-//     socket.emit("price","hello") 
-// })
-// eventRouter.use(express.json())
-// eventRouter.use(cors())
-
+EventRouter.post("/getAns",(req,res)=>{
+    let code = req.code
+    let data =  AnsModel.find({})
+    if(data.eventCode==code){
+        res.send(data)
+    }
+    
+})
 
 
 
-// eventRouter.post("/createEvent",async(req,res)=>{
-//     const data = req.body
-//     try{
-//         const todo =  new EventModel(data)
-//         await todo.save()
-//         res.send("todo created")
-//     }
-//     catch(err){
-//         res.send(err)
-//     }
-// })
-
-// module.exports = {eventRouter}
+module.exports = {EventRouter}

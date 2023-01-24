@@ -1,12 +1,11 @@
 const express = require("express")
 const jwt = require("jsonwebtoken")
 const cors = require('cors')
-const cookieParser = require('cookie-parser')
 
 const http = require("http")
 
 const {Server} =  require("socket.io")
-
+const cookieParser = require('cookie-parser')
 
 
 
@@ -18,7 +17,7 @@ const {authenticate} = require('./middleware/authorization')
 const {personalRouter} = require('./routes/personal.route')
 const {EventModel} =  require("./models/event.model")
 const {AnsModel} = require("./models/ans.model")
-
+const {EventRouter} = require("./routes/event.route")
 
 
 const app =  express()
@@ -39,6 +38,9 @@ app.get("/",function(req,res){
 
 app.use("/audiencepoll",user)
 app.use("/userOnbording",signupAuthenticate,personalRouter)
+app.use("/events",EventRouter)
+
+
 
 httpserver.listen(8050,async(req,res)=>{
     try{
@@ -83,6 +85,7 @@ io.on("connection",(socket)=>{
     
    
 })
+
 
 
 

@@ -16,7 +16,7 @@ login_btn.onclick=async()=>{
             }
             let res = await fetch("http://localhost:8050/audiencePoll/login",{
             method:"POST",
-           body: JSON.stringify(obj),
+            body: JSON.stringify(obj),
             headers: {
                 'Content-Type': 'application/json'
             },
