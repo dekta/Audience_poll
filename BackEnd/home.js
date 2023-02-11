@@ -120,18 +120,6 @@ user.post('/login',async(req,res)=>{
     
 })
 
-// user.get("/logout",(req,res)=>{
-//     const token = req.headers?.authorization?.split(' ')[1]|| req.cookies?.login_token
-//     console.log(token)
-//     const blacklisting = JSON.parse(fs.readFileSync("./blacklist.json","utf-8"))
-//     blacklisting.push(token)
-//     fs.writeFileSync("./blacklist.json",JSON.stringify(blacklisting))
-//     return res.send("user logout")
-
-// })
-
-
-
 
 
 module.exports = {user}

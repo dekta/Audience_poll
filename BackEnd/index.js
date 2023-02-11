@@ -32,7 +32,7 @@ const httpserver = http.createServer(app)
 
 
 app.get("/",function(req,res){
-    res.sendFile(`${process.cwd()}/FrontEnd/events.html`)
+    res.send("ok")
 })
     
 
@@ -52,6 +52,8 @@ httpserver.listen(8050,async(req,res)=>{
     }
     console.log("server")
 })
+
+
 let event = []
 const io = new Server(httpserver)
 io.on("connection",(socket)=>{

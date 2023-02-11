@@ -2,7 +2,7 @@
 const ques_div = document.getElementById("ques_div")
 
 async function AppendQues(){
-    let data = await fetch("http://localhost:8050/events/allques",{
+    let data = await fetch("https://audiencepoll-project.onrender.com/events/allques",{
         method:"GET",
         headers: {
             'Authorization':"token",
@@ -11,7 +11,7 @@ async function AppendQues(){
         
     })
     let res = await data.json()
-    //console.log(res)
+    console.log(res)
     res.forEach((el)=>{
         let div = document.createElement("div")
         div.setAttribute("class","event_div")

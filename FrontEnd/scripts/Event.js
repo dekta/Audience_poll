@@ -28,7 +28,7 @@ function Random(){
 Random()
 
 // const clientserver = io("https://tired-cuff-links-cod.cyclic.app/", { transports : ['websocket'] })
-const clientserver = io('http://localhost:8050/',{ transports : ['websocket'] })
+const clientserver = io('https://audiencepoll-project.onrender.com/',{ transports : ['websocket'] })
 let create = document.getElementById("create")
 create.onclick=()=>{
     let startDate = document.getElementById("sDate").value
@@ -81,10 +81,11 @@ clientserver.on("msg",(data)=>{
         let obj={
             personName,
             ans,
-            code,
+            eventCode:code,
             question,
             votes
         }
+        console.log(obj)
         if(code==client_code){
             clientserver.emit("clientMsg",obj)
         }

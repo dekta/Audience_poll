@@ -3,7 +3,7 @@ let mongoose =  require("mongoose")
 let ansSchema = mongoose.Schema({
     personName:{type:String, default:"Anonymous"},
     question:String,
-    ans:[String],
+    ans:String,
     votes:Number,
     eventCode:Number
 })
