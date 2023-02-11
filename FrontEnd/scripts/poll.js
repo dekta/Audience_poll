@@ -36,3 +36,8 @@ async function AppendQues(){
 }
 
 AppendQues()
+
+let home = document.getElementById("home")
+home.onclick = ()=>{
+    location.replace("events.html")
+}

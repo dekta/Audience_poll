@@ -1,14 +1,4 @@
-// let nav = document.querySelector(".navbar");
-//     window.addEventListener('scroll',() => {
 
-//         if(window.scrollY >= 50){
-//             nav.classList.add("active_navbar")
-//             nav.classList.add("active_navbar a")
-//         }
-//         else{
-//             nav.classList.remove("active_navbar")
-//         }
-//     })
 
 
 
@@ -27,7 +17,6 @@ function Random(){
 
 Random()
 
-// const clientserver = io("https://tired-cuff-links-cod.cyclic.app/", { transports : ['websocket'] })
 const clientserver = io('https://audiencepoll-project.onrender.com/',{ transports : ['websocket'] })
 let create = document.getElementById("create")
 create.onclick=()=>{
@@ -68,9 +57,9 @@ let  votes= 0
 clientserver.on("msg",(data)=>{
     console.log(data)
     const Eventcode = document.getElementById("show_code")
-    Eventcode .innerText = "Question"+data.eventCode
+    Eventcode .innerText = data.eventCode
     const questions = document.getElementById("show_ques")
-    questions.innerText = "Question"+data.question
+    questions.innerText = data.question
     let question = data.question
     let code = data.eventCode
     votes++

@@ -24,8 +24,10 @@ login_btn.onclick=async()=>{
 
             })
             let msg = await res.json()
-            alert(msg.msg)
-            location.replace("events.html")
+            if(msg.msg==="login successfully"){
+                location.replace("polls.html")
+            }
+           
 
         }
     }
