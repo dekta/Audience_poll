@@ -6,8 +6,6 @@ https://tubular-starburst-11e2a7.netlify.app/
 ### It was a solo project
 ### TechStack used :  HTML,CSS,JAVASCRIPT as frontend and NodeJs,Express,MongoDB as Backend.
 
-## deployed
-https://tubular-starburst-11e2a7.netlify.app/
 
 
 ## Logo
