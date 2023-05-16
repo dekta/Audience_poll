@@ -1,43 +1,65 @@
 
-const ques_div = document.getElementById("ques_div")
 
-async function AppendQues(){
-    let data = await fetch("https://audiencepoll-project.onrender.com/events/allques",{
-        method:"GET",
-        headers: {
-            'Authorization':"token",
-            'Content-Type': 'application/json'
-        },
-        
-    })
-    let res = await data.json()
-    console.log(res)
-    res.forEach((el)=>{
-        let div = document.createElement("div")
-        div.setAttribute("class","event_div")
-        let ques = document.createElement("p")
-        ques.innerText ="Question:"+ el.question
-        let code = document.createElement("p")
-        code.innerText= "Event Code:" + el.eventCode
-        let date1 = el.startDate
-        date1.split("T")[0]
-       let sDate = document.createElement("p")
-       sDate.innerText = date1.split("T")[0]
-       let date2 = el.startDate
-        date2.split("T")[0]
-        let eDate = document.createElement("p")
-       eDate.innerText = date2.split("T")[0]
+const socket = io("https://audience-poll.onrender.com/", { transports : ['websocket'] })
 
-       div.append(code,ques,sDate,eDate)
-       ques_div.append(div)
 
-    })
+let poll  = document.getElementById("poll")
 
+let Id = sessionStorage.getItem("EventId")
+let question = sessionStorage.getItem("Question")
+console.log("EventId",Id)
+console.log("question",question)
+
+
+let h11=  document.createElement("h1")
+h11.innerText = Id
+
+let h22 =  document.createElement("h1")
+h22.innerText = question
+
+poll.append(h11,h22)
+
+
+let ansBtn = document.getElementById('ansBtn')
+let answer = document.getElementById("ansIn")
+let uname = document.getElementById("uname")
+
+
+ansBtn.addEventListener("click",()=>{
+    let ans = answer.value
+    let user = uname.value
+    socket.emit("msg", ans,Id,user)
+})
+
+
+socket.on('globalEventMessage',(specificEvent)=>{
+    let ans = Object.values(specificEvent[0])[0].answer
+    AppendAns(ans)
+
+})
+
+
+
+function  AppendAns(ans){
+    let showans = document.getElementById("showAnsDiv")
+    showans.innerHTML = null
+   ans.forEach((ele)=>{
+    let h3 = document.createElement("h3")
+    h3.innerText = Object.values(ele)
+    showans.append(h3)
+   })
 }
 
-AppendQues()
 
-let home = document.getElementById("home")
-home.onclick = ()=>{
-    location.replace("events.html")
-}
+socket.on("delete",(x)=>{
+    console.log(x)
+})
+
+
+let welapopUp = document.getElementById("welapopUp")
+
+let p = document.getElementById("p")
+p.innerText = "WelCome"
+let Wbtn  = document.getElementById("button")
+Wbtn.innerText = "click"
+welapopUp.append(p,Wbtn)

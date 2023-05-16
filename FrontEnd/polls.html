@@ -6,14 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>polls</title>
     <link rel="stylesheet" href="./style/poll.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div ><button style="border: none; background-color: aqua; color: white; padding: 10px;" id="home">Back to Home</button></div>
     
-    <div id="ques_div">
-        
+    
+    <div id="poll" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+
     </div>
+
+    <div id="ansDiv">
+        <input type="text" name="" id="uname" placeholder="Enter Your Name">
+        <textarea name="" id="ansIn" cols="30" rows="10" placeholder="Please give answer and see others answer also..."></textarea>
+        <!-- <input id="ansIn" type="text" placeholder="Please give answer and see others answer also..."> -->
+        <button id="ansBtn">Enter</button>
+    </div>
+
+    <div id="showAnsDiv">
+
+    </div>
+
+    <div id="welapopUp" style="display: none;">
+
+    </div>
+
+
 </body>
 <script src="./scripts/poll.js"></script>
 </html>

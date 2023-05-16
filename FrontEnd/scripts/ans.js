@@ -13,7 +13,7 @@ Enter.onclick = (e)=>{
 
 async function AppendAns(){
     let obj = {eventCode:code}
-    let data = await fetch("https://audiencepoll-project.onrender.com/events/getAns",{
+    let data = await fetch("https://audience-poll.onrender.com/events/getAns",{
         method:"POST",
         body: JSON.stringify(obj),
         headers: {

@@ -5,30 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
-    <link rel="stylesheet" href="./style/myhome.css">
+    <link rel="stylesheet" href="./style/event.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
-      integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="navbar">
-        <div id="nav-1">
-            <div id="in">
-                <span class="material-symbols-outlined">search</span>
-                <input type="text" placeholder="Search event">
+            <div id="nav-1" onclick="home()" >
+                <img src="./images/Ap-removebg-preview.png" alt="" srcset="" />
             </div>
-            
-        </div>
         <div id="nav-2">
             <ul class="menu">
-                <li><a href="#question" class="menu-btn">Question</a></li>
-                <li><a href="#message" class="menu-btn">Enter Answer</a></li>
-                <li><a href="login.html" class="menu-btn">Polls</a></li>
-                <li><a href="ans.html" class="menu-btn">Participants Answers</a></li>
+                <li><a href="#AllEvents" class="menu-btn">Events</a></li>
+                <li><a href="#popup3" class="menu-btn">Polls</a></li>
             </ul>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
@@ -39,148 +28,69 @@
     <div id="content">
         <div id="event-1">
             <div id="event-1-1">
-                <h2 id="name"></h2>
                 <p>To run live polls, quizzes or Q&A sessions,create your first event. Unlimited and for free!</p>
+                
                 <div id="btn">
                     <a class="button_create" href="#popup1"><button >+ Create Event</button></a>
-                    <button id="watch">Watch how it works</button>
+                    <a class="button_create" href="#popup3"><button >+ Join Event</button></a>
                 </div>
             </div>
             <div class="img"><img src="./images/event.png.svg" alt="" srcset=""></div>
         </div>
 
-        <div id="event-2">
-            <p>Run AudiencePoll directly from your favorite tool</p>
-            <div id="event-2-2">
-               <div class="event-2-2-block">
-                <img src="./images/google-slide.png.svg" alt="" srcset="">
-                <p>Google Slides</p>
-               </div>
-               <div class="event-2-2-block">
-                <img src="./images/powerpoint.png.svg" alt="" srcset="">
-                <p>Microosft PowerPoint</p>
-               </div>
-               <div class="event-2-2-block">
-                <img src="./images/teams.png.svg" alt="" srcset="">
-                <p>Microsoft Teams</p>
-               </div>
-               <div class="event-2-2-block">
-                <img src="./images/webex.png.svg" alt="" srcset="">
-                <p>Webex Meetings</p>
-               </div>
-               
-            </div>
-        </div>
 
-        <div id="event-3">
-            <p>Templates for you</p>
-            <div id="event-3-1">
-                <div class="container" id="event-3-1-1">
-                    <div class="event-3-1-a">
-                        <span class="material-symbols-outlined">cloud</span>
-                        <p>World Cloud</p>
-                    </div>
-                    <p>Which country are you joining us from from?</p>
-                    <div class="event-3-1-b">       
-                    </div>
-
-                    <div class="button"><a href="#popup1">create Audience poll with this template </a></div>
-                      
-                </div>
-
-                <div class="container" id="event-3-1-2">
-                    <div class="event-3-1-a">
-                        <span class="material-symbols-outlined">list</span>
-                        <p>Multiple Choice</p>
-                    </div>
-                    <p>How familiar are you with the topic?</p>
-                    <div class="event-3-1-b">
-                        <div style="background-color: white">
-                            <p>I'm an expert</p>
-                            <div  style="width:25%;background-color:rgb(179, 174, 174);border-radius: 25px;padding: 2px;">11%</div>
-                          </div><br>
-                          
-                          <div style="background-color: white;">
-                            <p>I have some solid background</p>
-                            <div  style="width:50%;background-color: green;border-radius: 25px;padding: 2px;">56%</div>
-                          </div><br>
-                          
-                          <div style="background-color: white;">
-                            <p>I have some basic knowledge</p>
-                            <div  style="width:22%;background-color:rgb(179, 174, 174);border-radius: 25px;padding: 2px;">75%</div>
-                          </div><br>
-
-                          <div style="background-color: white">
-                            <p>I am complete green</p>
-                            <div  style="width:25%;background-color:rgb(179, 174, 174);border-radius: 25px;padding: 2px;">22%</div>
-                          </div><br>
-                          
-                    </div>
-                    <div class="button"><a href="#popup1">create Audience poll with this template</a></div>
-                </div>
-
-                <div class="container" id="event-3-1-3">
-                    <div class="event-3-1-a">
-                        <span class="material-symbols-outlined">sms</span>
-                        <p>Open Text</p>
-                    </div>
-                    <p>What is your key takeaway from this session?</p>
-                    <div class="event-3-1-b">
-                        <div class="event-3-1-b-c"><p>Remember to take break <span class="material-symbols-outlined">coffee</span></p></div>
-                        <div class="event-3-1-b-c"><p>Assign owners to the next steps<span class="material-symbols-outlined">footprint</span></p></div>
-                        <div class="event-3-1-b-c"><p>Sahre the notes immediately after the meeting<span class="material-symbols-outlined">description</span></p></div>
-                        <div class="event-3-1-b-c"><p>Keep the discussion on point<span class="material-symbols-outlined">hub</span></p></div>
-                        <div class="event-3-1-b-c"> <p>Always have an agenda<span class="material-symbols-outlined">check_small</span></p></div>
-                       
-                    </div>
-                    <div class="button"><a href="#popup1"> create Audience poll with this template</a></div>
-                </div>
-
-                
-            </div>
+        <div id="AllEvents">
+            <p>All Events</p>
+            <div id="event-box"></div>
         </div>
     </div>
-    <div class="box">
-
-    </div>
+  
     <div id="popup1" class="overlay">
         <div class="popup">
             <a class="close" href="#">&times;</a>
-            <h3>When do you want to use this Audience poll?</h3>
-            <div id="inputs">
-                <div>
-                    <p>Start date</p>
-                    <input id="sDate" type="date" placeholder="">
+            <h3>Create an Event</h3>
+            <div class="popdiv">
+                <div id="name">
+                    <p>Enter your event name</p>
+                    <input id="Aname" type="text" placeholder="Event name">
                 </div>
-                <div>
-                    <p>End date</p>
-                    <input id="eDate" type="date" placeholder="">
+                <div id="timediv">
+                    <p>Active Hours</p>
+                    <input id="time" type="datetime-local" placeholder="Enter Time">
+                </div>
+                <div id="btns">
+                    <a href="#popup2" ><button id="create" >Create</button></a>
+                    <a href="#" ><button id="cancel">Cancel </button></a>
                 </div>
             </div>
-
-            <div id="name">
-                <p>Give your Audience poll a name</p>
-                <input id="Aname" type="text" placeholder="Audience poll name">
-            </div>
-
-            <div id="btns">
-                <a href="#popup2" ><button id="create" >Create</button></a>
-                <a class="close-1" href="#"><button>Cancel </button></a>
-            </div>
-
         </div>
     </div>
 
     <div id="popup2" class="overlay">
         <div class="popup2">
             <a class="close" href="#">&times;</a>
-            <h3>Write your quuestion?</h3>
-            <div id="input">
+            <h3>Write your question</h3>
+            <div class="popdiv">
                 <div>
-                    <input id="quess" type="text" placeholder="What would you like to ask?">
+                    <input id="question" type="text" placeholder="What would you like to ask?">
                 </div>
-                <div id="open_text_btn" >
-                    <a href="#"><button id="open_text_create">Create</button></a>
+                <div >
+                    <a href="#"><button id="createQues">Create</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup3" class="overlay">
+        <div class="popup3">
+            <a class="close" href="#">&times;</a>
+            <h3>Write code</h3>
+            <div class="popdiv">
+                <div>
+                    <input id="code" type="text" placeholder="write a code">
+                </div>
+                <div>
+                    <a href="#"><button id="join_btn">Join</button></a>
                 </div>
             </div>
         </div>
@@ -203,19 +113,6 @@
         </div>
     </div>
 
-    <div id="question" class="overlay">
-        <div class="question">
-            <a class="close" href="#">&times;</a>
-            
-            <div id="input_ques">
-                <div id="Question_input">
-                    <h3 id="show_ques">Question:&nbsp</h3>
-                    <h3 id="show_code">code:&nbsp</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    
     
 </body>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script> 
