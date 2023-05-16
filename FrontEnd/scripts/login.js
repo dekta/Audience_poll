@@ -1,5 +1,6 @@
 let login_btn = document.getElementById("loginbtn");
 
+//login
 login_btn.onclick = async () => {
   let userName = document.getElementById("username").value;
   let email = document.getElementById("email").value;
