@@ -19,7 +19,7 @@ logo.src = "./images/Ap-removebg-preview.png"
 signupPop.append(logo,h3,okBtn)
 
 
-
+//singup
 btn.onclick=async()=>{
     let firstName = document.getElementById("fname").value
     let lastName = document.getElementById("lname").value

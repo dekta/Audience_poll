@@ -7,7 +7,7 @@ async function AllEvents() {
   box.innerHTML = null;
   let obj = { token: token };
   console.log(obj);
-  let data = await fetch("http://localhost:8500/events/allques", {
+  let data = await fetch("https://audience-poll.onrender.com/events/allques", {
     method: "POST",
     body: JSON.stringify(obj),
     headers: {
