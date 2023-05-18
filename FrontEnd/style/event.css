@@ -20,13 +20,15 @@ html{
     padding: 5px 20px ;
     display: flex;
     justify-content: right;
-
     
 }
 
 #nav-1 img{
     width: 10%;
     
+}
+#nav-1 img:hover{
+  cursor: pointer;
 }
 
 #in{
@@ -254,16 +256,6 @@ html{
   width: 30%;
 }
 
-.message {
-    margin: 70px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    width: 50%;
-    position: relative;
-    transition: all 2s ease-in-out;
-    
-  }
 
   .question {
     margin: 70px auto;
@@ -291,6 +283,24 @@ html{
     margin-left: 10px;
     font-size: 20px;
   }
+  #loading{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    border: 0px solid red;
+  }
+#loading img{
+  width: 100%;
+  margin: auto;
+}
+
+.cbtn:hover,#create:hover,#cancel:hover,#createQues:hover,#join_btn:hover{
+  cursor: pointer;
+  background-color: #2077e8;
+  color: white;
+}
 
 
 

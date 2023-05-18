@@ -49,19 +49,22 @@ width: 50%;
     list-style: none;
     border: 0px solid red
 }
+.menu li a:hover{
+    cursor: pointer;
+    background-color: #1a73e8;
+    color: white;
+}
 
 #navbar .menu li a{
     display: block;
     color: black;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: bold;
     margin-left: 25px;
     transition: color 0.3s ease;
     border: 2px solid transparent;
 }
-#navbar .menu li a:hover{
-    border: 2px solid #00253c;
-}
+
 #navbar.sticky .menu li a:hover{
     color: #fff;
 }
@@ -162,6 +165,7 @@ hr{
 .seven-c h3{
     font-size: 30px;
     font-weight: solid;
+
 }
 
 .seven-c p {
@@ -170,7 +174,7 @@ hr{
 }
 .seven-c h3 span{
     margin-right: 20px;
-    color: #b1ced7;
+    color: #1a73e8;
     font-size: 40px;
 }
 

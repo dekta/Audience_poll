@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #randomElementsContainer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            /* Add any other desired styling */
+        }
+    </style>
+   
+</head>
+<body>
+    <div id="randomElementsContainer"></div>
+</body>
+<script>
+var container = document.getElementById("randomElementsContainer");
+var elements = ["Element 1", "Element 2", "Element 3", "Element 4"];
+
+elements.forEach(function (element) {
+  var randomTop = Math.floor(Math.random() * container.clientHeight) + "px";
+  var randomLeft = Math.floor(Math.random() * container.clientWidth) + "px";
+
+  var elementDiv = document.createElement("h3");
+  elementDiv.textContent = element;
+  elementDiv.style.position = "absolute";
+  elementDiv.style.top = randomTop;
+  elementDiv.style.left = randomLeft;
+
+   var randomColor = getRandomColor();
+   elementDiv.style.color = randomColor;
+  container.appendChild(elementDiv);
+});
+
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+</script>
+</html>

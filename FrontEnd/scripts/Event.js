@@ -1,3 +1,4 @@
+let load =  document.getElementById("loading")
 let token = JSON.parse(sessionStorage.getItem("token"));
 let userEmail = JSON.parse(sessionStorage.getItem("userEmail"));
 console.log(userEmail);
@@ -6,7 +7,7 @@ AllEvents();
 async function AllEvents() {
   box.innerHTML = null;
   let obj = { token: token };
-  console.log(obj);
+  load.style.display = "block"
   let data = await fetch("https://audience-poll.onrender.com/events/allques", {
     method: "POST",
     body: JSON.stringify(obj),
@@ -15,7 +16,8 @@ async function AllEvents() {
     }
   });
   let res = await data.json();
-  console.log(res);
+  load.style.display = "none"
+  //console.log(res);
   if (res) {
     res.forEach((el) => {
       let div = document.createElement("div");
@@ -48,24 +50,45 @@ async function AllEvents() {
   }
 }
 
+function popup1(){
+  if(!token){
+    alert("Please login")
+  }
+  else{
+    window.location.href = "#popup1"
+  }
+}
+
+
+let starttime = null
+let End =null
 //connect
 const socket = io("https://audience-poll.onrender.com/", { transports: ["websocket"] });
 let globEventId = null;
-
 //create event
 const createRoomBtn = document.getElementById("createQues");
+
+//disconnect
+socket.on('disconnect', () => {
+  socket.close();
+});
+
+
 
 createRoomBtn.addEventListener("click", async () => {
   let eventName = document.getElementById("Aname").value;
   let question = document.getElementById("question").value;
   let endtime = document.getElementById("time").value;
-  console.log(eventName, question, time, userEmail);
   let eventId = Math.floor(Math.random() * 10000);
   let eventobj = { eventId, eventName, question, time, userEmail };
+  starttime = Date.now()
+  End = new Date(endtime).getTime();
+  console.log("timer", End-starttime)
 
   if (eventName == "" || question == "" || endtime == "" || eventId == "") {
     alert("please fill the details");
-  } else {
+  } 
+  else {
     let event = await fetch("https://audience-poll.onrender.com/events/ques", {
       method: "POST",
       body: JSON.stringify(eventobj),
@@ -86,7 +109,7 @@ const joinBtn = document.getElementById("join_btn");
 
 //event detail for user that created event
 socket.on("event", (event) => {
-  console.log(event);
+  //console.log(event);
 });
 
 joinBtn.addEventListener("click", () => {
@@ -96,8 +119,8 @@ joinBtn.addEventListener("click", () => {
 });
 
 socket.on("sendingEvent", (event) => {
-  console.log(event);
-  console.log(Object.values(event[0])[0].eventId);
+ // console.log(event);
+  //console.log(Object.values(event[0])[0].eventId);
   if (event) {
     sessionStorage.setItem(
       "EventId",
@@ -113,6 +136,17 @@ socket.on("sendingEvent", (event) => {
   }
 });
 
+
+
 function home() {
   window.location.href = "index.html";
 }
+
+
+  setTimeout(() => {
+    console.log("stop")
+    socket.on('disconnect', () => {
+      socket.close();
+    });
+
+  }, End-starttime); 

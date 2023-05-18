@@ -29,7 +29,9 @@ html{
     justify-items: center;
 
 }
-
+.logo:hover{
+    cursor: pointer;
+}
 
 #signup-right{
     width: 70%;
@@ -118,7 +120,7 @@ html{
 }
 
 #btn:hover{
-    background-color: black;
+    background-color: #2077e8;
     cursor: pointer;
 }
 
@@ -155,6 +157,13 @@ html{
 }
 #okbtn:hover{
     cursor: pointer;
+}
+#alt{
+    color: #b1ced7;
+    font-size: 20px;
+}
+#alt:hover{
+    color: #2077e8;
 }
 
 @media screen and (max-width: 769px){

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #randomTextContainer {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        }
+
+        .randomText {
+        position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="randomTextContainer"></div>
+</body>
+
+<script>
+
+var container = document.getElementById("randomTextContainer");
+var elements = ["Element 1", "Element 2", "Element 3", "Element 4"];
+
+elements.forEach(function (element) {
+  var randomTop, randomLeft;
+  var isOverlapping = true;
+  var elementWidth = 100; 
+  var elementHeight = 20; 
+
+  while (isOverlapping) {
+    randomTop = Math.floor(Math.random() * (container.clientHeight - elementHeight)) + "px";
+    randomLeft = Math.floor(Math.random() * (container.clientWidth - elementWidth)) + "px";
+
+    isOverlapping = checkOverlap(randomTop, randomLeft, elementWidth, elementHeight);
+  }
+
+  var elementSpan = document.createElement("span");
+  elementSpan.textContent = element;
+  elementSpan.classList.add("randomText");
+
+  var randomColor = getRandomColor();
+  elementSpan.style.color = randomColor;
+
+  elementSpan.style.top = randomTop;
+  elementSpan.style.left = randomLeft;
+
+  container.appendChild(elementSpan);
+});
+
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function checkOverlap(top, left, width, height) {
+  var elements = document.getElementsByClassName("randomText");
+
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    var elementRect = element.getBoundingClientRect();
+    var newRect = {
+      top: parseInt(top),
+      left: parseInt(left),
+      width: width,
+      height: height,
+    };
+
+    if (isRectOverlapping(elementRect, newRect)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function isRectOverlapping(rect1, rect2) {
+  return (
+    rect1.left < rect2.left + rect2.width &&
+    rect1.left + rect1.width > rect2.left &&
+    rect1.top < rect2.top + rect2.height &&
+    rect1.top + rect1.height > rect2.top
+  );
+}
+
+</script>
+
+</html>

@@ -25,14 +25,20 @@
         </div>
     </div>
 
+    <div id="loading" style="display: none;">
+        <img src="./images/lazy-loading.png" alt="">
+        
+    </div>
+
+
     <div id="content">
         <div id="event-1">
             <div id="event-1-1">
                 <p>To run live polls, quizzes or Q&A sessions,create your first event. Unlimited and for free!</p>
                 
                 <div id="btn">
-                    <a class="button_create" href="#popup1"><button >+ Create Event</button></a>
-                    <a class="button_create" href="#popup3"><button >+ Join Event</button></a>
+                    <a class="button_create"><button class="cbtn" onclick="popup1()" >+ Create Event</button></a>
+                    <a class="button_create" href="#popup3"><button class="cbtn" >+ Join Event</button></a>
                 </div>
             </div>
             <div class="img"><img src="./images/event.png.svg" alt="" srcset=""></div>
@@ -96,23 +102,7 @@
         </div>
     </div>
 
-    <div id="message" class="overlay">
-        <div class="message">
-            <a class="close" href="#">&times;</a>
-            
-            <div id="input_msg">
-                <div>
-                    <input id="event_code" type="text" placeholder="Code">
-                    <input id="p_name" type="text" placeholder="Enter name">
-                    <input id="in_msg" type="text" placeholder="Enter answer">
-                </div>
-                <div id="msg_btn" >
-                    <a href="#"><button id="msg_btn">Send</button></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+   
     
 </body>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script> 

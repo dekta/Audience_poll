@@ -45,9 +45,6 @@ html{
 }
 
 
-
-
-
 #name h1{
     margin-top: 20px;
 }
@@ -119,6 +116,12 @@ html{
     border-radius: 2%;
     color: white;
 }
+#loginbtn:hover{
+    cursor: pointer;
+}
+.logo:hover{
+    cursor: pointer;
+}
 
 #btn:hover{
     background-color: black;
@@ -158,6 +161,13 @@ html{
 }
 #okbtn:hover{
     cursor: pointer;
+}
+#alt{
+    color: #b1ced7;
+    font-size: 20px;
+}
+#alt:hover{
+    color: #2077e8;
 }
 
 @media screen and (max-width: 769px){
