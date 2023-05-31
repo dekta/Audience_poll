@@ -103,7 +103,7 @@ input:nth-child(2) {
     position: absolute;
     width: fit-content;
     padding: 10px;
-    background-color: #99caeb   ;
+    background-color: #99caeb7b;
     border-radius: 30px;
     font-family: 'Barlow', sans-serif;
     font-family: 'Inter', sans-serif;

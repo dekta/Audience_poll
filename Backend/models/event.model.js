@@ -7,7 +7,8 @@ let eventSchema = mongoose.Schema({
     question:String,
     endTime:Date,
     answers:[{ type: Object }],
-    votes:{type:Number,default:0}
+    votes:{type:Number,default:0},
+    Status:{type:String,default:"Active"}
 })
 
 let EventModel = mongoose.model("event",eventSchema)

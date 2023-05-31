@@ -63,7 +63,6 @@ ansBtn.addEventListener("click", sendMessage)
 
 
 socket.on('globalEventMessage', (specificEvent, votes) => {
-  console.log(votes)
   let ans = Object.values(specificEvent[0])[0].answer
   AppendAns(ans)
 })
@@ -95,7 +94,7 @@ function checkOverlap(element, otherElements) {
 function AppendAns(ans) {
   const childWidth = 50;
   const childHeight = 50;
-  const maxAttempts = 100;
+  const maxAttempts = 50;
   let parentDiv = document.getElementById("showAnsDiv")
   parentDiv.innerHTML = null
   
@@ -109,7 +108,8 @@ function AppendAns(ans) {
     spanLabelTag.innerText = resultArray[0];
     spanDataTag.innerText = ele[resultArray[0]];
     spanDataTag.style.color  =  getRandomColor()
-    child.append(spanLabelTag,spanDataTag)
+    spanLabelTag.style.color = "#2077e8"
+    child.append(spanLabelTag," : ",spanDataTag)
     parentDiv.appendChild(child);
 
     let posX, posY;
@@ -139,7 +139,7 @@ function getRandomColor() {
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
-  return color;
+  return color+80;
 }
 
 

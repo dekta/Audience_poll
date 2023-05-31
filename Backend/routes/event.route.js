@@ -15,7 +15,7 @@ EventRouter.post("/allques", async (req, res) => {
       .send({ error: "Authorization token not provided , please login" });
     return;
   }
-  jwt.verify(token, "LoginKey", async (err, decoded) => {
+  jwt.verify(token, process.env.JwtKey, async (err, decoded) => {
     if (err) {
       res.status(401).send({ error: "Invalid token" });
       return;

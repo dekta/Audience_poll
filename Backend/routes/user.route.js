@@ -92,7 +92,7 @@ user.post('/login',async(req,res)=>{
         if(user.email){
             bcrypt.compare(password, hash_password, function(err, result) {
                 if(result){
-                    const token = jwt.sign({email,id:user._id,userName}, "LoginKey");
+                    const token = jwt.sign({email,id:user._id,userName}, process.env.JwtKey);
                     res.cookie("token",token,{httpOnly:true})
                     res.status(200).send({"msg":"login successfully","token":token,"userName":userName,"email":email})
                 }

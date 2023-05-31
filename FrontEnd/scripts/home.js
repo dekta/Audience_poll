@@ -65,8 +65,6 @@ if(userName){
 function handleLogin(userName){
   let csignUp = document.querySelector(".outer_signup_btn")
   let cLogin = document.querySelector(".outer_login_btn")
-  console.log('cLogin:', cLogin)
-  console.log('csignUp:', csignUp)
   csignUp.style.display = "none"
   cLogin.style.display = "none"
 
@@ -90,7 +88,6 @@ function handleLogin(userName){
 let out = document.getElementById("logout")
 if(out){
   out.onclick = () =>{
-    console.log("hi")
     sessionStorage.removeItem("userName")
     window.location.reload()
   }

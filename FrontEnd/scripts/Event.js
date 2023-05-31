@@ -1,12 +1,10 @@
 let token = JSON.parse(sessionStorage.getItem("token"));
 let userEmail = JSON.parse(sessionStorage.getItem("userEmail"));
-
 let loadingSection = document.querySelector(".loading_section");
 
-
-console.log(userEmail);
 let box = document.getElementById("event-box");
-AllEvents();
+
+
 async function AllEvents() {
   box.innerHTML = null;
   let obj = { token: token };
@@ -19,6 +17,7 @@ async function AllEvents() {
     }
   });
   let res = await data.json();
+
   loadingSection.style.display = "none"
   if (res) {
     res.forEach((el) => {
@@ -27,27 +26,34 @@ async function AllEvents() {
       let id = document.createElement("p");
       let ques = document.createElement("p");
       let eventName = document.createElement("p");
+      let status = document.createElement("p");
       let h21 = document.createElement("h2");
       let h22 = document.createElement("h2");
       let h23 = document.createElement("h2");
-      h21.innerText = "Event ID:";
-      h22.innerText = "Event Name:";
-      h23.innerText = "Question:";
+      let h24 = document.createElement("h2");
+      h21.innerText = "Event ID: ";
+      h22.innerText = "Event Name: ";
+      h23.innerText = "Question: ";
+      h24.innerText = "Status: ";
       id.innerText = el.eventId;
       eventName.innerText = el.eventName;
       ques.innerText = el.question;
+      status.innerText = el.Status
       let div1 = document.createElement("div");
       let div2 = document.createElement("div");
       let div3 = document.createElement("div");
+      let div4 = document.createElement("div");
       div1.append(h21, id);
       div2.append(h22, eventName);
       div3.append(h23, ques);
-      div.append(div1, div2, div3);
+      div4.append(h24,status)
+      div.append(div1, div2, div3,div4);
       box.append(div);
 
       div1.setAttribute("class", "cont");
       div2.setAttribute("class", "cont");
       div3.setAttribute("class", "cont");
+      div4.setAttribute("class", "cont");
     });
   }
 }
@@ -65,16 +71,15 @@ function popup1(){
 let starttime = null
 let End =null
 //connect
-const socket = io("https://audience-poll.onrender.com/", { transports: ["websocket"] });
 let globEventId = null;
+const socket = io("https://audience-poll.onrender.com/", { transports: ["websocket"] });
+
 //create event
 const createRoomBtn = document.getElementById("createQues");
 
-//disconnect
 socket.on('disconnect', () => {
   socket.close();
 });
-
 
 
 createRoomBtn.addEventListener("click", async () => {
@@ -85,7 +90,6 @@ createRoomBtn.addEventListener("click", async () => {
   let eventobj = { eventId, eventName, question, time, userEmail };
   starttime = Date.now()
   End = new Date(endtime).getTime();
-  console.log("timer", End-starttime)
 
   if (eventName == "" || question == "" || endtime == "" || eventId == "") {
     alert("please fill the details");
@@ -99,9 +103,11 @@ createRoomBtn.addEventListener("click", async () => {
       }
     });
     let res = await event.json();
-    // console.log(res)
-    AllEvents();
-    globEventId = eventId;
+    if(res){
+      globEventId = eventId;
+      sessionStorage.setItem("eventId", JSON.stringify(eventId));
+      AllEvents();
+    }
 
     socket.emit("createEvent", eventId, question, eventName, endtime);
   }
@@ -109,10 +115,7 @@ createRoomBtn.addEventListener("click", async () => {
 
 const joinBtn = document.getElementById("join_btn");
 
-//event detail for user that created event
-socket.on("event", (event) => {
-  //console.log(event);
-});
+
 
 joinBtn.addEventListener("click", () => {
   const code = document.getElementById("code").value;
@@ -121,8 +124,6 @@ joinBtn.addEventListener("click", () => {
 });
 
 socket.on("sendingEvent", (event) => {
- // console.log(event);
-  //console.log(Object.values(event[0])[0].eventId);
   if (event) {
     sessionStorage.setItem(
       "EventId",
@@ -144,11 +145,29 @@ function home() {
   window.location.href = "index.html";
 }
 
+setTimeout(() => {
+  socket.on('disconnect', () => {
+    socket.close();
+  });
+  ExpiredEvent()
+}, End-starttime); 
 
-  setTimeout(() => {
-    console.log("stop")
-    socket.on('disconnect', () => {
-      socket.close();
+
+
+async function ExpiredEvent(){
+  let eventId = JSON.parse(sessionStorage.getItem("eventId"));
+  const event = {
+    userEmail:userEmail,
+    eventId
+  }
+ if(eventId){
+      let statusUpdate = await fetch("https://audience-poll.onrender.com/events/status", {
+        method: "PATCH",
+        body: JSON.stringify(event),
+        headers: {
+          "Content-Type": "application/json"
+        }
     });
-
-  }, End-starttime); 
+ }
+ AllEvents()
+}
