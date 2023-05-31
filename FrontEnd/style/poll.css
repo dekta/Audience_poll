@@ -1,39 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-body {
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;600&family=Inter:wght@400;600&display=swap');
+* {
     box-sizing: border-box;
+    font-family: 'Barlow', sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
 }
 
-#nav-1{
-    width: 100%;
-    background-color: #b1ced7;
-    padding: 5px 20px ;
+#nav-1 {
+    width: 100% !important;
+    background-color: #99caeb;
+    padding: 5px 20px;
     display: flex;
-    
+
 }
 
-#nav-1 img{
+#nav-1 img {
     width: 10%;
     margin-right: 10px;
 }
-#nav-1>img:hover{
+
+#nav-1>img:hover {
     cursor: pointer;
 }
 
-#poll{
-    width:30%;
+#content {
+    padding: 20px;
+    border-top: 1px solid black;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#poll {
+    width: 30%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     text-align: center;
     padding: 10px;
-    margin: auto;
+    height: fit-content;
+    border-radius: 5px;
 }
-
-#content{
+#content {
     width: 100%;
     display: flex;
 }
 
-.quesDiv{
+.quesDiv {
     display: flex;
     gap: 10px;
     border: 0px solid red;
@@ -41,34 +52,26 @@ body {
     align-items: center;
 }
 
-#showAnsDiv{
-    width: 60%;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    position: relative;
-    height: 500px;
-    overflow:scroll;
-    margin-bottom: 20px;
-}
 
 .randomText {
     position: absolute;
 }
 
-#ansDiv{
+#ansDiv {
     display: flex;
-    align-items:flex-start;
+    align-items: flex-start;
     background-color: #2077e8;
     width: 80%;
-    margin: auto;
     gap: 10px;
-   justify-content: center;
-   margin-top: 20px;
-   margin-bottom: 20px;
-   padding: 20px;
-   border-radius: 25px;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 25px;
+    margin: 20px auto;
+    transition: all 1.5s ease-in-out;
 }
 
-input,button{
+input,
+button {
     padding: 10px;
     border: none;
     outline: none;
@@ -76,77 +79,140 @@ input,button{
     text-align: center;
 }
 
-input:nth-child(1){
+input:nth-child(1) {
     width: 20%;
 
 }
-input:nth-child(2){
+
+input:nth-child(2) {
     width: 50%;
 }
 
-button{
+#showAnsDiv {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+}
+
+.child {
+    position: absolute;
+    width: fit-content;
+    padding: 10px;
+    background-color: #99caeb   ;
+    border-radius: 30px;
+    font-family: 'Barlow', sans-serif;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+}
+
+.child>span {
+    display: block;
+    white-space: nowrap;
+}
+
+.child>span:nth-child(1) {
+    color: white;
+    font-weight: 600;
+    margin-right: 5px;
+    text-decoration: underline;
+}
+
+.child>span:nth-child(2) {
+    width: fit-content;
+}
+
+
+button {
     width: 10%;
-    background-color: #b1ced7d9;
+    background-color: #99caebd9;
     color: white;
     font-size: 15px;
     font-weight: bold;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
     background-color: #869295d9;
 }
 
-@media screen and (max-width: 426px){
-    #ansDiv{
-        width: 80%;
-        margin: 15px;
+
+
+@media screen and (max-width: 640px) {
+
+    #content {
+        align-items: center;
+        flex-direction: row;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #poll {
+        width: 100%;
+    }
+
+    #ansDiv {
+        width: 90%;
         flex-direction: column;
-        padding: 20px;
+        padding: 10px !important;
     }
-    input:nth-child(1){
-        width: 95%;
-    
+
+    input:nth-child(1) {
+        width: 100%;
+
     }
-    input:nth-child(2){
-        width: 95%;
+
+    input:nth-child(2) {
+        width: 100%;
     }
 
 
-    button{
+    button {
         width: 100%;
     }
-    #nav-1{
+
+    #nav-1 {
         width: 100%;
     }
-    img{
+
+    img {
         width: 100%;
     }
-   
+
 }
-@media screen and (max-width: 640px){
-    #ansDiv{
-        width: 80%;
-        margin: 15px;
+
+@media screen and (max-width: 426px) {
+    #ansDiv {
+        box-sizing: border-box;
+        width: 95%;
         flex-direction: column;
-        padding: 20px;
     }
-    input:nth-child(1){
-        width: 95%;
-    
+
+    input:nth-child(1) {
+        width: 100%;
+
     }
-    input:nth-child(2){
-        width: 95%;
+
+    input:nth-child(2) {
+        width: 100%;
     }
 
 
-    button{
+    button {
         width: 100%;
     }
-    #nav-1{
+
+    #nav-1 {
         width: 100%;
     }
-    img{
+
+    img {
         width: 100%;
     }
-   
+
 }

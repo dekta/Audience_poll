@@ -1,13 +1,16 @@
-let load =  document.getElementById("loading")
 let token = JSON.parse(sessionStorage.getItem("token"));
 let userEmail = JSON.parse(sessionStorage.getItem("userEmail"));
+
+let loadingSection = document.querySelector(".loading_section");
+
+
 console.log(userEmail);
 let box = document.getElementById("event-box");
 AllEvents();
 async function AllEvents() {
   box.innerHTML = null;
   let obj = { token: token };
-  load.style.display = "block"
+  loadingSection.style.display = "flex"
   let data = await fetch("https://audience-poll.onrender.com/events/allques", {
     method: "POST",
     body: JSON.stringify(obj),
@@ -16,8 +19,7 @@ async function AllEvents() {
     }
   });
   let res = await data.json();
-  load.style.display = "none"
-  //console.log(res);
+  loadingSection.style.display = "none"
   if (res) {
     res.forEach((el) => {
       let div = document.createElement("div");

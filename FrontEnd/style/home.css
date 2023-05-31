@@ -1,230 +1,340 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
 }
-body{
-    box-sizing: border-box;
-}
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
 
 /* navbar */
-#navbar{
+#navbar {
     width: 100%;
-    border: 0px solid red;
     padding: 10px 10px;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    background-color: #b1ced78a;
+    background-color: #99caeb8a;
     backdrop-filter: blur(3px);
-    
+
 }
-.logo img{
-width: 50%;
+
+.logo {
+    width: 50%;
+}
+
+.logo img {
+    width: clamp(40px, 100%, 120px);
 }
 
 .sticky {
     position: fixed;
     top: 0;
     width: 100%;
-  }
+}
 
-  .sticky + .container {
-    padding-top: 100px;
-  }
-.menu{
+
+.menu {
     display: flex;
-    width: 50%;
-   justify-content: right;
-}
-.menu li{
-    list-style: none;
-    border: 0px solid red
-}
-.menu li a:hover{
-    cursor: pointer;
-    background-color: #1a73e8;
-    color: white;
+    width: fit-content;
+    justify-content: right;
+    gap: 20px;
 }
 
-#navbar .menu li a{
-    display: block;
+.menu li {
+    list-style-type: none;
+}
+
+#navbar .menu li a {
     color: black;
     font-size: 18px;
     font-weight: bold;
-    margin-left: 25px;
     transition: color 0.3s ease;
     border: 2px solid transparent;
 }
 
-#navbar.sticky .menu li a:hover{
-    color: #fff;
+.menu a:hover {
+    cursor: pointer;
+    background-color: #1a73e8;
+    color: white !important;
+
 }
 
-.menu-btn{
-    background-color: #b1ced7;
+.menu-btn {
+    background-color: #99caeb;
     padding: 10px 20px;
-    border-radius: 25px;
+    border-radius: 15px;
     font-weight: bold;
-    
+
 }
 
 /* content */
+.container {
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 50px;
+}
 
-
-#first{
+#first {
+    text-align: center;
+    width: 60% !important;
     display: flex;
     color: #fff;
-    background-size: cover;
-    font-family: 'Ubuntu', sans-serif;
-    border: 0px solid green;
     padding: 6px;
-    width: 60%;
     border-radius: 40px;
     background-color: #1a73e8;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    margin-top: 150px;
     font-weight: bold;
-    font-size: 20px;   
+    margin: auto;
+    font-size: 20px;
 }
 
 
-#second  p{
+#second p {
     text-align: center;
     margin-top: 10px;
     font-size: 25px;
     font-weight: 400;
-    
+
 }
 
-#third{
+#third {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+#third img {
     width: 100%;
-    border: 0px solid red;
-  margin-top: 20px;
-}
-
-#third img{
-    width: 100%;
 }
 
 
 
-#fourth{
+#fourth {
     margin-top: 80px;
     width: 60%;
     margin: auto;
     text-align: center;
 }
-#fourth h1{
+
+#fourth h1 {
     font-size: 50px;
-    margin-top: 100px;
 }
 
-#fourth p{
+#fourth p {
     font-size: 20px;
     margin-top: 20px;
 }
 
-#seven{
+#seven {
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     width: 100%;
     text-align: center;
-    margin-top: 100px;
+
 }
-#seven-left video{
+
+#seven-left {
     width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#seven-left video {
+    width: 100%;
     padding: 10px;
-    border: 0px solid red;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-#seven-right{
-    width: 50%;
-    margin-right: 30px;
-    padding: 10px;
-    border: 0px solid red;
+
+#seven-right {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-hr{
+
+#seven-right>div {
+    width: fit-content;
+}
+
+hr {
     background-color: rgb(205, 200, 200);
     margin-top: 5px;
 }
-.seven-c{
+
+.seven-c {
+    display: flex;
+    justify-content: start;
+    align-items: center;
     padding: 20px;
+    flex-direction: column;
 }
 
-.seven-c h3{
-    font-size: 30px;
+.seven-c h3 {
+    font-size: 28px;
     font-weight: solid;
-
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
 }
 
 .seven-c p {
     padding: 20px;
     font-size: 20px;
 }
-.seven-c h3 span{
+
+.seven-c h3 span {
     margin-right: 20px;
     color: #1a73e8;
     font-size: 40px;
 }
 
-@media screen and (max-width: 1024px){
-    #navbar{
+
+@media screen and (max-width: 1024px) {
+    #navbar {
         width: 100%;
     }
-    #first{
+
+    #first {
         width: 60%;
         padding: 5px;
     }
 
+    .seven-c {
+        padding: 5px;
+    }
+
+    .seven-c h3 {
+        font-size: 22px !important;
+    }
+
+    .seven-c h3 span {
+        margin-right: 5px;
+        font-size: 22px;
+    }
+
+
 }
-@media screen and (max-width: 769px){
-    #navbar{
+
+@media screen and (max-width: 769px) {
+    #navbar {
         width: 100%;
     }
-    #first{
+
+    #first {
         width: 60%;
         padding: 5px;
         font-size: 15px;
     }
-    .menu{
-        width: 50%;
-    }   
+
+    .menu li a {
+        font-size: 14px !important;
+    }
+
+    .menu-btn {
+        padding: 10px;
+        border-radius: 28px;
+    }
+
+    #third {
+        width: 70%;
+    }
+
+    #second>p {
+        font-size: 20px !important;
+    }
+
+    #fourth>h1 {
+        font-size: 22px !important;
+    }
+
+    .seven-c h3 {
+        font-size: 18px !important;
+    }
 }
 
-@media screen and (max-width: 426px){
-    #navbar{
+@media screen and (max-width: 426px) {
+    #navbar {
         width: 100%;
     }
-    #first{
-        width: 90%;
+    #first {
+        width: 100%;
         padding: 5px;
         font-size: 15px;
     }
-    .menu{
-        width: 50%;
-        border: 0px solid red;
+
+    .menu {
         display: flex;
     }
-    .menu li{
+
+    .menu li {
         list-style: none;
-        border: 0px solid red
-    }
-    .menu-btn{
-        padding: 5px;
-        border-radius: 25px;
-        font-weight: bold;
-        
     }
 
+    .menu-btn {
+        padding: 2px;
+        border-radius: 20px;
+    }
+
+    .menu li a {
+        font-size: 12px !important;
+        font-weight: 500;
+    }
+
+    #second>p {
+        font-size: 20px !important;
+    }
+
+    #third {
+        width: 100%;
+    }
+
+    #fourth {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #fourth>h1 {
+        font-size: 20px !important;
+    }
+
+    #fourth>p {
+        font-size: 14px !important;
+    }
+
+    #seven {
+        flex-direction: column;
+    }
+
+    #seven-left {
+        width: 100%;
+    }
+
+    #seven-right {
+        width: 100%;
+    }
+
+    #seven-right>div {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .seven-c h3 {
+        font-size: 16px !important;
+    }
 }

@@ -63,9 +63,11 @@ if(userName){
 
 
 function handleLogin(userName){
-  let csignUp = document.getElementById("signup")
+  let csignUp = document.querySelector(".outer_signup_btn")
+  let cLogin = document.querySelector(".outer_login_btn")
+  console.log('cLogin:', cLogin)
+  console.log('csignUp:', csignUp)
   csignUp.style.display = "none"
-  let cLogin = document.getElementById("login")
   cLogin.style.display = "none"
 
   let user = document.createElement("li")

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
     <link rel="stylesheet" href="./style/event.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"
+        integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="navbar">
-            <div id="nav-1" onclick="home()" >
-                <img src="./images/Ap-removebg-preview.png" alt="" srcset="" />
-            </div>
+        <div id="nav-1" onclick="home()">
+            <img src="./images/Ap-removebg-preview.png" alt="" srcset="" />
+        </div>
         <div id="nav-2">
             <ul class="menu">
                 <li><a href="#AllEvents" class="menu-btn">Events</a></li>
@@ -25,9 +30,9 @@
         </div>
     </div>
 
-    <div id="loading" style="display: none;">
-        <img src="./images/lazy-loading.png" alt="">
-        
+    <!-- In this section we are going to create loading section  -->
+    <div class="loading_section">
+        <img src="./images/Pulse_loading.gif" />
     </div>
 
 
@@ -35,10 +40,10 @@
         <div id="event-1">
             <div id="event-1-1">
                 <p>To run live polls, quizzes or Q&A sessions,create your first event. Unlimited and for free!</p>
-                
+
                 <div id="btn">
-                    <a class="button_create"><button class="cbtn" onclick="popup1()" >+ Create Event</button></a>
-                    <a class="button_create" href="#popup3"><button class="cbtn" >+ Join Event</button></a>
+                    <a class="button_create"><button class="cbtn" onclick="popup1()">+ Create Event</button></a>
+                    <a class="button_create" href="#popup3"><button class="cbtn">+ Join Event</button></a>
                 </div>
             </div>
             <div class="img"><img src="./images/event.png.svg" alt="" srcset=""></div>
@@ -50,7 +55,7 @@
             <div id="event-box"></div>
         </div>
     </div>
-  
+
     <div id="popup1" class="overlay">
         <div class="popup">
             <a class="close" href="#">&times;</a>
@@ -65,8 +70,8 @@
                     <input id="time" type="datetime-local" placeholder="Enter Time">
                 </div>
                 <div id="btns">
-                    <a href="#popup2" ><button id="create" >Create</button></a>
-                    <a href="#" ><button id="cancel">Cancel </button></a>
+                    <a href="#popup2"><button id="create">Create</button></a>
+                    <a href="#"><button id="cancel">Cancel </button></a>
                 </div>
             </div>
         </div>
@@ -80,7 +85,7 @@
                 <div>
                     <input id="question" type="text" placeholder="What would you like to ask?">
                 </div>
-                <div >
+                <div>
                     <a href="#"><button id="createQues">Create</button></a>
                 </div>
             </div>
@@ -102,9 +107,10 @@
         </div>
     </div>
 
-   
-    
+
+
 </body>
-<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script> 
+<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 <script src="./scripts/Event.js"></script>
+
 </html>

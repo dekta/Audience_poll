@@ -25,6 +25,8 @@ btn.onclick=async()=>{
     let lastName = document.getElementById("lname").value
     let email = document.querySelector(".email").value
     let password = document.querySelector(".pass").value
+    let loadingSection = document.querySelector(".loading_section");
+    loadingSection.style.display = "flex"
     try{
         if(firstName=='' || lastName==''||email==''||password==''){
             alert("please fill all details")
@@ -60,7 +62,7 @@ btn.onclick=async()=>{
     catch(err){
         console.log(err)
     }
-
+    loadingSection.style.display = "none"
     
 }
 

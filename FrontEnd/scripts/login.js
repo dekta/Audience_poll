@@ -2,10 +2,11 @@ let login_btn = document.getElementById("loginbtn");
 
 //login
 login_btn.onclick = async () => {
+  let loadingSection = document.querySelector(".loading_section");
+  loadingSection.style.display = "flex"
   let userName = document.getElementById("username").value;
   let email = document.getElementById("email").value;
   let password = document.getElementById("pass").value;
-  //console.log(email,password)
   try {
     if (email == "" || password == "" || userName == "") {
       alert("Please fill all details");
@@ -40,6 +41,7 @@ login_btn.onclick = async () => {
   } catch (err) {
     console.log(err);
   }
+  loadingSection.style.display = "none"
 };
 
 function home() {

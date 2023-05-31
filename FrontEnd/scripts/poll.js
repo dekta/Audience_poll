@@ -1,158 +1,155 @@
 
 
-const socket = io("https://audience-poll.onrender.com/", { transports : ['websocket'] })
+const socket = io("https://audience-poll.onrender.com/", { transports: ['websocket'] })
 
-window.addEventListener("load",()=>{
-    sendMessage();
+window.addEventListener("load", () => {
+  sendMessage();
 })
 
-let poll  = document.getElementById("poll")
+// Getting the loggedin user data from session storage for input box because we want to give the default name of sender if he don't want write his name.
 
+let loggedInUser = sessionStorage.getItem("userName")
+
+
+
+let poll = document.getElementById("poll")
 let Id = sessionStorage.getItem("EventId")
 let question = sessionStorage.getItem("Question")
 
 let Iddiv = document.createElement("div")
-Iddiv.setAttribute("class","quesDiv")
-let Idp =  document.createElement("p")
+Iddiv.setAttribute("class", "quesDiv")
+let Idp = document.createElement("p")
 let Idh = document.createElement("h3")
 Idh.innerText = "EventId: "
 Idp.innerText = Id
-Iddiv.append(Idh,Idp)
+Iddiv.append(Idh, Idp)
 
 let Quesdiv = document.createElement("div")
-Quesdiv.setAttribute("class","quesDiv")
-let Quesp =  document.createElement("p")
+Quesdiv.setAttribute("class", "quesDiv")
+let Quesp = document.createElement("p")
 let Quesh = document.createElement("h3")
 Quesh.innerText = "Question: "
-Quesp .innerText = question
-Quesdiv.append(Quesh,Quesp)
+Quesp.innerText = question
+Quesdiv.append(Quesh, Quesp)
 
-poll.append(Iddiv,Quesdiv)
+poll.append(Iddiv, Quesdiv)
 
 
 let ansBtn = document.getElementById('ansBtn')
 let answer = document.getElementById("ansIn")
 let uname = document.getElementById("uname")
+uname.defaultValue = loggedInUser?.split("").slice(1,loggedInUser.length-1).join("") || ""
 
 
-function sendMessage(){
-    let ans = answer.value || "welcome"
-    let user = uname.value
 
-    if(user==""){
-        user = "Anonymous"
-    }
+function sendMessage() {
+  let ans = answer.value || "welcome"
+  let user = uname.value
 
-    if(ans==""){
-        alert("please give answer then send!")
-    }
-    else{
-        socket.emit("msg", ans,Id,user)
-    } 
-   
+  if (user == "") {
+    user = "Anonymous"
+  }
+
+  if (ans == "") {
+    alert("please give answer then send!")
+  }
+  else {
+    socket.emit("msg", ans, Id, user)
+  }
+  answer.value = ""
 }
 
-ansBtn.addEventListener("click",sendMessage)
+ansBtn.addEventListener("click", sendMessage)
 
 
-socket.on('globalEventMessage',(specificEvent,votes)=>{
+socket.on('globalEventMessage', (specificEvent, votes) => {
   console.log(votes)
-    let ans = Object.values(specificEvent[0])[0].answer
-    AppendAns(ans)
-
+  let ans = Object.values(specificEvent[0])[0].answer
+  AppendAns(ans)
 })
 
 
-function  AppendAns(ans){
-    let container = document.getElementById("showAnsDiv")
-    container.innerHTML = null
-   
-   ans.forEach((ele)=>{
-        var randomTop, randomLeft;
-        var isOverlapping = true;
-        var elementWidth = 100;
-        var elementHeight = 20;
 
-        while (isOverlapping) {
-            randomTop = Math.floor(Math.random() * (container.clientHeight - elementHeight)) + "px";
-            randomLeft = Math.floor(Math.random() * (container.clientWidth - elementWidth)) + "px";
-        
-            isOverlapping = checkOverlap(randomTop, randomLeft, elementWidth, elementHeight);
-        }
+function getRandomPosition(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function checkOverlap(element, otherElements) {
+  const rect1 = element.getBoundingClientRect();
+  for (let i = 0; i < otherElements.length; i++) {
+    const rect2 = otherElements[i].getBoundingClientRect();
+    if (
+      rect1.left < rect2.right &&
+      rect1.right > rect2.left &&
+      rect1.top < rect2.bottom &&
+      rect1.bottom > rect2.top
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
 
 
-        let elementDiv = document.createElement("div");
-        elementDiv.classList.add("randomText");
-        let name = document.createElement("p")
-        let msg = document.createElement("p")
-        let space = document.createElement("p")
-        space.innerText = " :  "
 
-        name.textContent = Object.keys(ele)
-        msg.textContent = Object.values(ele);
-        msg.style.marginLeft = "5px"
-        elementDiv.append(name,space,msg)
+function AppendAns(ans) {
+  const childWidth = 50;
+  const childHeight = 50;
+  const maxAttempts = 100;
+  let parentDiv = document.getElementById("showAnsDiv")
+  parentDiv.innerHTML = null
+  
+  ans.forEach((ele,i) => {
+    const child = document.createElement('div');
+    child.className = 'child';
+    child.setAttribute("class","child")
+    let spanLabelTag = document.createElement("span")
+    let spanDataTag = document.createElement("span")
+    let resultArray = Object.keys(ele);
+    spanLabelTag.innerText = resultArray[0];
+    spanDataTag.innerText = ele[resultArray[0]];
+    spanDataTag.style.color  =  getRandomColor()
+    child.append(spanLabelTag,spanDataTag)
+    parentDiv.appendChild(child);
 
-        elementDiv.style.position = "absolute";
-        elementDiv.style.top = randomTop;
-        elementDiv.style.left = randomLeft;
-        elementDiv.style.border = "1px solid black"
-        elementDiv.style.display = "flex"
-        elementDiv.style.padding = "5px"
+    let posX, posY;
+    let attempts = 0;
+    do {
+      posX = getRandomPosition(0, parentDiv.offsetWidth - childWidth);
+      posY = getRandomPosition(0, parentDiv.offsetHeight - childHeight);
+      child.style.left = posX + 'px';
+      child.style.top = posY + 'px';
+      attempts++;
+    } while (
+      checkOverlap(child, Array.from(parentDiv.getElementsByClassName('child')).slice(0, i)) &&
+      attempts < maxAttempts
+    );
 
-        let randomColor = getRandomColor();
-        name.style.color = randomColor;
-        msg.style.color = randomColor
-        container.appendChild(elementDiv);
-    })
+    if (attempts >= maxAttempts) {
+      // Reset the position if it fails to find a non-overlapping position
+      child.style.left = '';
+      child.style.top = '';
+    }
+  })
 }
 
 function getRandomColor() {
-    var letters = "0123456789ABCDEF";
-    var color = "#";
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
-  function checkOverlap(top, left, width, height) {
-    var elements = document.getElementsByClassName("randomText");
-  
-    for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-      var elementRect = element.getBoundingClientRect();
-      var newRect = {
-        top: parseInt(top),
-        left: parseInt(left),
-        width: width,
-        height: height,
-      };
-      if (isRectOverlapping(elementRect, newRect)) {
-        return true;
-      }
-    }
-  
-    return false;
-  }
 
 
-  function isRectOverlapping(rect1, rect2) {
-    return (
-      rect1.left < rect2.left + rect2.width &&
-      rect1.left + rect1.width > rect2.left &&
-      rect1.top < rect2.top + rect2.height &&
-      rect1.top + rect1.height > rect2.top
-    );
-  }
 
-
-socket.on("delete",(x)=>{
-    console.log(x)
+socket.on("delete", (x) => {
+  console.log(x)
 })
 
 
 function home() {
-    window.location.href = "index.html";
-  }
-  
+  window.location.href = "index.html";
+}

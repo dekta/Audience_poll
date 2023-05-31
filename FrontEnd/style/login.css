@@ -1,28 +1,29 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
 
-#signup{
+#signup {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-#signup-left{
+#signup-left {
     width: 30%;
-    background-color: #b1ced7cb;
-    padding:  250px 30px;
+    background-color: #99caebcb;
+    padding: 250px 30px;
     color: white;
-    
+
 }
 
-.logo{
+.logo {
     width: 100%;
     margin: auto;
     display: block;
@@ -31,7 +32,7 @@ html{
 }
 
 
-#signup-right{
+#signup-right {
     width: 70%;
     border: 0px solid blue;
     width: 50%;
@@ -45,19 +46,20 @@ html{
 }
 
 
-#name h1{
+#name h1 {
     margin-top: 20px;
 }
 
-#name p{
+#name p {
     margin-top: 20px;
 }
-#btn-2{
+
+#btn-2 {
     width: 100%;
     margin-top: 20px;
     background-color: white;
     border: 0;
-    padding: 5px ;
+    padding: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     text-align: center;
     display: flex;
@@ -68,12 +70,13 @@ html{
     gap: 10px;
 
 }
- #btn-2 img{
+
+#btn-2 img {
     width: 5%;
-    
+
 }
 
-#info{
+#info {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin: auto;
     padding: 20px;
@@ -83,14 +86,15 @@ html{
     flex-direction: column;
 }
 
-#info input{
+#info input {
     padding: 15px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     outline: none;
     margin-top: 10px;
 }
-#name{
+
+#name {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +103,8 @@ html{
     width: 100%;
 }
 
-.email,.pass{
+.email,
+.pass {
     width: 100%;
     border: 0;
     margin-top: 40px;
@@ -107,8 +112,8 @@ html{
     outline: 0;
 }
 
-#loginbtn{
-    background-color: #b1ced7;
+#loginbtn {
+    background-color: #99caeb;
     border: 0;
     width: 100%;
     padding: 15px 20px;
@@ -116,25 +121,27 @@ html{
     border-radius: 2%;
     color: white;
 }
-#loginbtn:hover{
-    cursor: pointer;
-}
-.logo:hover{
+
+#loginbtn:hover {
     cursor: pointer;
 }
 
-#btn:hover{
+.logo:hover {
+    cursor: pointer;
+}
+
+#btn:hover {
     background-color: black;
     cursor: pointer;
 }
 
-.term{
+.term {
     margin-top: 20px;
     text-align: center;
 }
 
-#signupPop{
-    background-color: #b1ced790;
+#signupPop {
+    background-color: #99caeb90;
     backdrop-filter: blur(5px);
     width: 50%;
     margin: auto;
@@ -143,14 +150,16 @@ html{
     text-align: center;
 
 }
-#signupPop >h3{
+
+#signupPop>h3 {
     font-size: 30px;
 }
-#logoimg{
+
+#logoimg {
     width: 100%;
 }
 
-#okbtn{
+#okbtn {
     width: 100%;
     color: #2077e8;
     padding: 20px;
@@ -159,108 +168,145 @@ html{
     border: none;
     font-weight: bold;
 }
-#okbtn:hover{
+
+#okbtn:hover {
     cursor: pointer;
 }
-#alt{
-    color: #b1ced7;
+
+#alt {
+    color: #99caeb;
     font-size: 20px;
 }
-#alt:hover{
+
+#alt:hover {
     color: #2077e8;
 }
 
-@media screen and (max-width: 769px){
-    #singup{
-       width: 100%; 
-       border: 0px solid red;
+.loading_section {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.678);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 769px) {
+    #singup {
+        width: 100%;
+        border: 0px solid red;
     }
-    #signup-left{
+
+    #signup-left {
         border: 0px solid green;
         width: 30%;
     }
-    .logo{
+
+    .logo {
         width: 100%;
     }
-    #signup-right{
+
+    #signup-right {
         width: 70%;
     }
-    #info{
+
+    #info {
         width: 100%;
         border: 0px solid red;
     }
 }
-@media screen and (max-width: 627px){
-    #signup{
-       width: 100%; 
-       flex-direction: column;
-       border: 0px solid red;
+
+@media screen and (max-width: 627px) {
+    #signup {
+        width: 100%;
+        flex-direction: column;
+        border: 0px solid red;
     }
-    #signup-left{
+
+    #signup-left {
         border: 0px solid green;
         width: 100%;
         padding: 10px;
     }
-    .logo{
+
+    .logo {
         width: 50%;
     }
-    #signup-right{
+
+    #signup-right {
         width: 100%;
     }
-    #info{
+
+    #info {
         width: 100%;
         border: 0px solid red;
     }
-    #name{
+
+    #name {
         flex-direction: column;
     }
 }
-@media screen and (max-width: 426px){
-    #signup{
-       width: 100%; 
-       flex-direction: column;
-       border: 0px solid red;
+
+@media screen and (max-width: 426px) {
+    #signup {
+        width: 100%;
+        flex-direction: column;
+        border: 0px solid red;
     }
-    #signup-left{
+
+    #signup-left {
         border: 0px solid green;
         width: 100%;
         padding: 10px;
     }
-    .logo{
+
+    .logo {
         width: 50%;
     }
-    #signup-right{
+
+    #signup-right {
         width: 100%;
     }
-    #info{
+
+    #info {
         width: 100%;
         border: 0px solid red;
     }
-    #name{
+
+    #name {
         flex-direction: column;
     }
 }
-@media screen and (max-width: 376px){
-    #signup{
-       width: 100%; 
-       flex-direction: column;
+
+@media screen and (max-width: 376px) {
+    #signup {
+        width: 100%;
+        flex-direction: column;
     }
-    #signup-left{
+
+    #signup-left {
         border: 0px solid green;
         width: 100%;
         padding: 10px;
     }
-    .logo{
+
+    .logo {
         width: 50%;
     }
-    #signup-right{
+
+    #signup-right {
         width: 100%;
     }
-    #info{
+
+    #info {
         width: 100%;
         border: 0px solid red;
     }
-    #name{
+
+    #name {
         flex-direction: column;
     }
 }
